@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Anton', sans-serif;
+}
+.addmovie{
+    background-image: linear-gradient(to bottom right,rgb(0, 255, 98), rgba(0 ,255 ,98 ,0.2));
+    box-sizing: border-box;
+    border-radius: 10ch;
+}
+.moviename{
+    margin-top: 50px;
+}
+.moviename p{
+    font-size: 34px;
+}
+.moviename label{
+    margin-left: 12px;
+    margin-right: 50px;
+}
+.movieposter label{
+    margin-left: 82px;
+    margin-right: 50px;
+}
+.movielink label{
+    margin-left: 21px;
+    margin-right: 50px;
+}
+.add{
+    margin-top: 25px;
+    margin-bottom: 10px;
+}

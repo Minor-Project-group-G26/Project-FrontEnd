@@ -1,0 +1,27 @@
+.wrapper {
+    margin-top: 15px;
+  }
+  .wrapper h3 {
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 900;
+    font-family: 'Aclonica', sans-serif; 
+    background: linear-gradient(to right, #d80d40 10%, #fff 50%, #9a5bff 60%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 1.5s linear infinite;
+    display: inline-block;
+  }
+  
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
