@@ -18,6 +18,7 @@ import ForgetPass from './components/Admin/components/LoginPage/ForgetPass';
 import ResetPass from './components/Admin/components/LoginPage/ResetPass';
 import AdminProfile from './components/Admin/components/Pages/AdminProfile';
 import CategoryDb from './components/Admin/components/Pages/CategoryDb';
+import CustomModal from './components/Module/Modal/CustomModal';
 
 
 function AdminRoute() {
@@ -98,6 +99,11 @@ function AdminRoute() {
                 <Route path='/admin/dashboard/movie/commentslist' exact>
                   <LeftBar   />
                   <CommentList   />   
+                </Route>
+                <Route exact path='/admin/:404'>
+                  <main>
+                  <CustomModal text="404 PAGE NOT FOUND"  icon="fail" open={true} onClose={()=>window.location.href="/"}/>
+                  </main>
                 </Route>   
             </Switch>      
         </Router>     

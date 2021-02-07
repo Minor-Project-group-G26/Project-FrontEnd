@@ -13,10 +13,9 @@ const Header = Styled.header`
     z-index:100;
     display: flex;
     position: absolute;
-    left: 1rem;
     top: 3rem;
-    margin-left: 2rem;
-    width: 90%;
+    /* padding-left: 2rem; */
+    width: 100%;
     overflow:hidden;
     color:#FFF;
     justify-content: center;
@@ -50,16 +49,18 @@ const Header = Styled.header`
     }
     .parentDiv{
       display: flex;
+      /* float: right; */
       position: relative;
+      margin-right: 30px;
+      justify-content: flex-end;
 
       .childDiv1{
-        flex: 1;
-        margin-right: 8px;
+      
       }
       .childDiv2{
-        flex: 1;
+        
       }
-    }
+   }
 
     
 `;
@@ -143,7 +144,7 @@ const useStyle = makeStyles((theme) => ({
     flexDirection:'row',
     justifyContent: 'center',
     ["@media(max-width: 500px)"]:{
-      // flexDirection: 'column'
+      flexDirection: 'column'
   },
 },
   SearchInput:{
@@ -153,7 +154,7 @@ const useStyle = makeStyles((theme) => ({
     // fontSize: 24
     ["@media(max-width: 500px)"]:{
       // flexDirection: 'column',
-      width: '80%',
+      width: '100%',
       
   },
   },
@@ -168,6 +169,7 @@ const useStyle = makeStyles((theme) => ({
     },
     padding: '0.3rem 1.5rem',
     marginTop: 10,
+    marginLeft: '10px',
     // fontSize: 24
     color: '#FFF',
     // border: "2px solid #00bfb6",
@@ -282,7 +284,7 @@ function readOutLoud(message) {
       <Header id='header'>
         <span className='mobile' onClick={mobileMenuHandler}><Menu /></span>
         <Grid container id='menu' className='container'>
-          <Grid item md={2} sm={4} xs={12} className={classes.chlidContainer}>
+          <Grid item md={3} sm={4} xs={12} className={classes.chlidContainer}>
           <div className="wrapper"><a href="/"><h3>Motion Pictures</h3></a></div>
           </Grid>
           <Grid item xs={12} sm={8} md={5} className={classes.Search}>
@@ -296,23 +298,23 @@ function readOutLoud(message) {
           label="Search field" type="search" />
           </div>
           <div className="parentDiv">
-            <div className="childDiv1">
+            {/* <div className="childDiv1"> */}
             
               <Button onClick={SearchMovieHandler} className={classes.SearchBtn} variant="contained">
                 <span><SearchOutlined /></span>
               
               </Button>
             
-            </div>
-            <div className="childDiv2">
+            {/* </div> */}
+            {/* <div className="childDiv2"> */}
               <Button  className={classes.SearchBtn} onClick={()=>recognition.start()} variant="contained">
               <span><MicIcon /></span>
               </Button>
-            </div>
+            {/* </div> */}
           </div>
           </Grid>
 
-          <Grid item xs={12} sm={12} md={5} className={classes.NavList}>
+          <Grid item xs={12} sm={12} md={4} className={classes.NavList}>
             <NavList>
               <li><div className="navLink"><NavLink exact to='/' className='Link' activeClassName='active'>Home</NavLink></div></li>
               <li><div className="navLink"><NavLink exact to='/category' className='Link'>Category</NavLink></div></li>

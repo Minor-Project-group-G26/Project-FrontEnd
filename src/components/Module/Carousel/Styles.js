@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 
 export const CaroStyles = makeStyles((theme) => ({
     root: {
-        width: '80%',
+        width: '90%',
         padding: '1rem',
         transition: 'all0 650ms ease',
         '&:hover':{
@@ -14,7 +14,8 @@ export const CaroStyles = makeStyles((theme) => ({
         margin: theme.spacing(2),
     },
     media: {
-        height: '400px',
+        height: 0,
+        paddingTop: '140%',
     },
     button: {
         margin: theme.spacing(1),

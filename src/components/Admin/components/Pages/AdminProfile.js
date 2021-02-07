@@ -56,25 +56,22 @@ const Boss = styled.div`
         font-size: 20px;
         font-family: 'Fraunces', serif;
     }
-    .edit{
-        position: relative;
-        float: right;
-        width: 100%;
-        margin-top: 370px;
-        padding-right: 30px;
-        background-color: yellow;
-    }
+
     @media (max-width: 1317px){
-    .div2{
-        width: 90%;
-        float: left;
-        margin-left:30px;
+        .div2{
+            width: 90%;
+            float: left;
+            margin-left:30px;
         }
         .div1{
             width: 90%;
         }
         .dota{
             width: 100%;
+        }
+        .avatar{
+            width: 120px;
+            height: 120px;
         }
     }
     @media (max-width: 990px){
@@ -100,7 +97,7 @@ const Boss = styled.div`
     }
     @media (max-width: 625px){
         .parent1{
-            margin-top: 10px;
+            margin-top: 30px;
             margin-left: 8px;
         }
         .avatar{
@@ -111,11 +108,33 @@ const Boss = styled.div`
 `;
 
 const useStyles = makeStyles((theme) => ({
-    edit:{
-        
-        float: 'right',
-        width: '60px',
+    cancel:{
+        float:'right',
+        backgroundColor:'white',
+        position: 'relative',
+        width: '165px',
         height: '40px',
+        marginTop: '180px',
+        marginRight: '-165px',
+    },
+    save:{
+        float: 'right',
+        backgroundColor: 'green',
+        position: 'relative',
+        width: '165px',
+        height: '40px',
+        marginTop: '180px',
+        marginRight: '-350px',
+    },
+    edit:{
+        display: 'none',
+        float: 'right',
+        backgroundColor: 'red',
+        position: 'relative',
+        width: '350px',
+        height: '40px',
+        marginTop: '180px',
+        marginRight: '30px', 
     },
     button: {
         margin: '10px 0',
@@ -124,14 +143,34 @@ const useStyles = makeStyles((theme) => ({
     },
     ['@media (max-width:1317px)']: {
         button: {
-        width: '100%',
-        height: '40px',
+            width: '100%',
+            height: '40px',
+        },
+        edit:{
+            width: '37%',
+            marginTop: '27px',
+            marginRight: '50px',    
+        },
+        save:{
+            width: '23%',
+            marginTop: '27px',
+            marginRight: '50px',
+        },
+        cancel:{
+            width: '23%',
+            marginTop: '27px',
+            marginRight: '10px'
         }
     },
     ['@media (max-width:990px)']: {
         button: {
-        width: '90%',
-        height: '40px',
+            width: '90%',
+            height: '40px',
+        },
+        edit:{
+            transition: 'all 0.3s ease',
+            marginTop: '30px',
+            marginRight: '35px',    
         }
     }
   }));
@@ -139,6 +178,7 @@ const useStyles = makeStyles((theme) => ({
 function AdminProfile() {
 
     const classes = useStyles();
+    
 
     return (
         <Boss>
@@ -179,20 +219,17 @@ function AdminProfile() {
                     </div>
                 </div>
             </div>
-
-            <div className="edit">
                 <Button
-                variant="contained"
-                color="primary"
-                size="small"
-                className={classes.edit}
-                startIcon={<CreateRoundedIcon />}
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    className={classes.edit}
+                    startIcon={<CreateRoundedIcon />}
                 >
-                Edit
-                </Button>
-            </div>
-            
-            
+                Update
+                </Button> 
+
+   
         </Boss>
     )
 }
