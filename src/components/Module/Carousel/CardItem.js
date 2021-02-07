@@ -12,7 +12,6 @@ import {
 } from '@material-ui/core';
 import Logo from './logo.svg'
 import { loadCSS } from 'fg-loadcss';
-import './CardItem.css'
 import { CaroStyles } from './Styles'
 import { Link } from 'react-router-dom';
 

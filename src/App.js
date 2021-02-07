@@ -1,28 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import AdminRoute from './AdminRoute'
+import Card from './components/Module/test/Card';
 import UserRoute from './UserRoute'
 
 
 function App() {
 
-  // const [LoginUser, setLoginUser] = useState(false);
-  // // const classes = useStyles()
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem('USER_TOKEN');
-  //   const email = localStorage.getItem('USER_NAME');
-  //   console.log(LoginUser);
-  //   if(token && email){
-  //     setLoginUser(true);
-  //   }
-  //   return ()=> {setLoginUser(false);}
-  // },[LoginUser])
-
   return (
     <Router>
       
         <Switch>
+        <Route exact path='/card'>
+           
+            <Card />
+            
+        </Route>
         <Route path='/admin'>
           {/* <p>Admin</p> */}
           <AdminRoute/>

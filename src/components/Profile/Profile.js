@@ -1,5 +1,4 @@
 import React,{ useEffect, useState } from 'react'
-import './Profile.css';
 import { Grid, Avatar,TextField, Button,  FormHelperText, FormControl, makeStyles} from '@material-ui/core'
 import { Save, Edit, Cancel } from '@material-ui/icons'
 // import CustomModal from '../Module/Modal/CustomModal'
@@ -11,15 +10,15 @@ const useStyle = makeStyles((theme) =>({
         html: {
           WebkitFontSmoothing: 'auto',
         },
-        span:{
-            color:'#fff'
-        }
+        
     },
     inputField:{
         width: '80%'
     },
     button: {
         margin: theme.spacing(1),
+        fontWeight: 600,
+        fontSize: 16
     },
     root:{
         padding: '3rem 2rem',
@@ -93,6 +92,9 @@ const useStyle = makeStyles((theme) =>({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'stretch',
+        ["@media(max-width: 500px)"]:{
+            flexDirection: 'column'
+          },
     }
 }))
 

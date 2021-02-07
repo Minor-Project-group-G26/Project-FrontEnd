@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import { Grid, makeStyles } from '@material-ui/core'
-import "./Footer.css"
 
 // material ui stylesheet
 const useStyle = makeStyles((theme) => ({

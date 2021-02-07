@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import { motion } from "framer-motion";
-import './Homepage.css';
+
 import Carosuel from '../Module/Carousel/Carosuel';
-import { Typography } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import Axios from 'axios'; 
 import {HomeStyles} from './Style'
 
@@ -33,6 +33,7 @@ const MovieData = [{
   Title: "React",
   discription: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
 }]
+
 
 function Homepage() {
   const classes = HomeStyles()

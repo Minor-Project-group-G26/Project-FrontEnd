@@ -1,6 +1,7 @@
 .wrapper {
     margin-top: 15px;
-    text-align: center;
+    text-align: right;
+    margin-right: 8px;
   }
   .wrapper h3 {
     text-align: center;
@@ -24,5 +25,10 @@
   @keyframes textclip {
     to {
       background-position: 200% center;
+    }
+  }
+  @media only screen and (max-width: 500px){
+    .wrapper {
+      text-align: center;
     }
   }

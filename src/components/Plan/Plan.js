@@ -2,7 +2,7 @@ import { Button, Grid, makeStyles } from '@material-ui/core';
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import CustomModal from '../Module/Modal/CustomModal';
-import './Plan.css';
+
 import { PlanList } from './planTypes'
 const useStyle = makeStyles(theme => ({
     planList: {

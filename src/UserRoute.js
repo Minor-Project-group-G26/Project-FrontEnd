@@ -19,6 +19,7 @@ import MainMovie from './components/MovieCard/MainMovie'
 import Search from './components/Search/Search'
 import ForgetPassword from './components/Signin/ForgetPassword'
 import ResetPassword from './components/Signin/ResetPassword'
+import Card from './components/Module/test/Card'
 
 
 const useStyles = makeStyles(theme=>({
@@ -26,9 +27,6 @@ const useStyles = makeStyles(theme=>({
     html: {
       WebkitFontSmoothing: 'auto',
     },
-    span:{
-        color:'#fff'
-    }
   }
 }))
 
@@ -85,6 +83,7 @@ function UserRoute() {
           <Route exact path='/user/reset/:tokenId'>
             <ResetPassword />
           </Route>
+         
           <Route exact path='/:404'>
             <main>
             <CustomModal text="404 PAGE NOT FOUND"  icon="fail" open={true} onClose={()=>window.location.href="/"}/>

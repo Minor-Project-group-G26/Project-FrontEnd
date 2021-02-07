@@ -37,10 +37,12 @@ export const CaroStyles = makeStyles((theme) => ({
         transition: 'all 650m ease',
     },
     movieName:{
-        minHeight: '40px',
-        maxHeight: '40px',
+        minHeight: '70px',
+        maxHeight: '70px',
         fontWeight: '600',
         textDecoration: 'none',
+        overflow: 'hidden',
+        display: '-webkit-box',
         
     }
 

@@ -3,6 +3,7 @@ import { NavLink, Link, useHistory } from 'react-router-dom'
 import { Grid, makeStyles, TextField, Button } from "@material-ui/core"
 import { SearchOutlined , Menu} from "@material-ui/icons"
 import MicIcon from '@material-ui/icons/Mic';
+
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
 import './Navbar.css'
@@ -128,12 +129,14 @@ const NavList = Styled.ul`
     @media(max-width:500px){
       flex-direction: column;
       .pc{
-        display: 'none'
+        display: 'none';
+      }
+      .navLink{
+        font-size: 18px;
       }
     }
 
 `
-
 
 
 
@@ -152,9 +155,9 @@ const useStyle = makeStyles((theme) => ({
     padding: '0 2rem',
     marginTop: 0,
     // fontSize: 24
-    ["@media(max-width: 500px)"]:{
+    ["@media(max-width: 1100px)"]:{
       // flexDirection: 'column',
-      width: '100%',
+      width: '90%',
       
   },
   },
@@ -163,17 +166,19 @@ const useStyle = makeStyles((theme) => ({
       html: {
         WebkitFontSmoothing: 'auto',
       },
-      span:{
-          color:'#fff'
-      }
+    
     },
     padding: '0.3rem 1.5rem',
     marginTop: 10,
     marginLeft: '10px',
-    // fontSize: 24
-    color: '#FFF',
+    // fontSize: 24,
+    color: '#fff',
     // border: "2px solid #00bfb6",
     background: '#00bfb6',
+    ["@media(max-width: 1100px)"]:{
+      transform: 'scale(0.75)',
+      marginLeft: 0
+  },
     ["@media(max-width: 500px)"]:{
       flexDirection: 'column',
   },
@@ -187,10 +192,15 @@ const useStyle = makeStyles((theme) => ({
   },
   },
   NavList:{
+    ["@media(max-width: 1100px)"]:{
+      display: 'flex',
+      fontSize: 18,
+    },
     ["@media(max-width: 500px)"]:{
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      fontSize: 16,
     },
   }
 
@@ -284,7 +294,7 @@ function readOutLoud(message) {
       <Header id='header'>
         <span className='mobile' onClick={mobileMenuHandler}><Menu /></span>
         <Grid container id='menu' className='container'>
-          <Grid item md={3} sm={4} xs={12} className={classes.chlidContainer}>
+          <Grid item md={2} sm={4} xs={12} className={classes.chlidContainer}>
           <div className="wrapper"><a href="/"><h3>Motion Pictures</h3></a></div>
           </Grid>
           <Grid item xs={12} sm={8} md={5} className={classes.Search}>
@@ -301,8 +311,7 @@ function readOutLoud(message) {
             {/* <div className="childDiv1"> */}
             
               <Button onClick={SearchMovieHandler} className={classes.SearchBtn} variant="contained">
-                <span><SearchOutlined /></span>
-              
+                <SearchOutlined />
               </Button>
             
             {/* </div> */}
@@ -314,7 +323,7 @@ function readOutLoud(message) {
           </div>
           </Grid>
 
-          <Grid item xs={12} sm={12} md={4} className={classes.NavList}>
+          <Grid item xs={12} sm={12} md={5} className={classes.NavList}>
             <NavList>
               <li><div className="navLink"><NavLink exact to='/' className='Link' activeClassName='active'>Home</NavLink></div></li>
               <li><div className="navLink"><NavLink exact to='/category' className='Link'>Category</NavLink></div></li>

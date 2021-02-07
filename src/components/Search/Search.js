@@ -82,7 +82,7 @@ function Search(props) {
              setItems(result);
            }
          )
-     }, []);
+     });
 
     const Film = items.map((data) => { 
     return (
