@@ -301,7 +301,7 @@ function AddMovie2() {
                 components={makeAnimated()}
                 options={Actor}
                 theme={customTheme}
-                placeholder="Select Category Name"
+                placeholder="Select Cast Name"
                 noOptionsMessage={()=>"No Other Option :("}
                 onChange={(selectedOption) => {
                     selectedOption.map(item =>item.value)
@@ -314,13 +314,13 @@ function AddMovie2() {
                 
             />
            
-            <label className="fontsize" htmlFor="moviecast">Directors</label>
+            <label className="fontsize" htmlFor="moviecast">Director</label>
             <Select 
                 className="multiselect"
                 components={makeAnimated()}
                 options={Director}
                 theme={customTheme}
-                placeholder="Select Category Name"
+                placeholder="Select Director Name"
                 noOptionsMessage={()=>"No Other Option :("}
                 onChange={(selectedOption) => {
                     selectedOption.map(item =>item.value)

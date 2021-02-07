@@ -267,6 +267,7 @@ function Signup() {
                     <div className="form__submit">
                         <div className="option">
                             <FormControlLabel
+                                style={{color:'#555'}}
                                 control={<GreyCheckbox checked={ state.TC } required onChange={handleChange} name="TC" />}
                                 label="Agree Term and Condition"
                             />

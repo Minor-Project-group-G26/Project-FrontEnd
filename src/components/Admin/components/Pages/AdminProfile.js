@@ -1,4 +1,4 @@
-import { Avatar, Button, makeStyles, withStyles } from '@material-ui/core';
+import { Avatar, Button, makeStyles } from '@material-ui/core';
 import React from 'react';
 import styled from "styled-components";
 import CachedRoundedIcon from '@material-ui/icons/CachedRounded';
@@ -87,6 +87,7 @@ const Boss = styled.div`
         }
     }
     @media (max-width: 830px){
+        height: 100%;
         .parent1{
             margin-left:15px;
         }
@@ -105,7 +106,7 @@ const Boss = styled.div`
             height: 100px;
         }
     }
-    @media (max-width: 320px){
+    @media (max-width: 540px){
         /* background-color: yellow; */
         left: 82%;
         top: 48%;
@@ -139,13 +140,9 @@ const Boss = styled.div`
             font-size: 15px;
         }
     }
+    /* @media (max-width: 360) */
 `;
 
-const insideStyle = withStyles({
-    label: {
-        color: '#fff',
-    }
-})
 
 const useStyles = makeStyles((theme) => ({
     cancel:{
@@ -170,6 +167,7 @@ const useStyles = makeStyles((theme) => ({
         // display: 'none',
         float: 'right',
         backgroundColor: 'red',
+        color: '#fff',
         position: 'relative',
         width: '350px',
         height: '40px',
@@ -177,9 +175,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: '30px', 
     },
     button: {
-        span :{
-            color: '#fff',
-        },
+        color: '#fff',
         margin: '10px 0',
         width: '350px',
         height: '40px',
@@ -192,7 +188,7 @@ const useStyles = makeStyles((theme) => ({
         update:{
             width: '37%',
             marginTop: '27px',
-            marginRight: '50px',    
+            marginRight: '32px',    
         },
         save:{
             width: '23%',
@@ -216,18 +212,28 @@ const useStyles = makeStyles((theme) => ({
             marginRight: '35px',    
         }
     },
-    ['@media (max-width:320px)']: {
+    ['@media (max-width:768px)']: {
         button: {
-            label:{
-                fontSize: '10px',
-            },
+            width: '90%',
+            height: '40px',
+        },
+        update:{
+            transition: 'all 0.3s ease',
+            marginTop: '17px',
+            marginRight: '45px',    
+        }
+    },
+    ['@media (max-width:540px)']: {
+        button: {
+            fontSize: '10px',
             width: '100%',
             height: '30px',
         },
         update:{
-            transition: 'all 0.3s ease',
+            fontSize: '12px',
             marginTop: '30px',
-            marginRight: '35px',    
+            marginRight: '15px',
+            height: '30px',    
         }
     },
   }));
