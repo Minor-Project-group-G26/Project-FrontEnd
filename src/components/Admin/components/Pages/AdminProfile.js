@@ -1,4 +1,4 @@
-import { Avatar, Button, makeStyles } from '@material-ui/core';
+import { Avatar, Button, makeStyles, withStyles } from '@material-ui/core';
 import React from 'react';
 import styled from "styled-components";
 import CachedRoundedIcon from '@material-ui/icons/CachedRounded';
@@ -29,7 +29,7 @@ const Boss = styled.div`
         border-radius: 5px;
         border: 1px solid #ddd;
         margin:10px 0;
-        padding: 20px;
+        padding: 5px 15px; 
         box-sizing: border-box;
         font-size: 18px;
         font-weight: 500;
@@ -105,7 +105,47 @@ const Boss = styled.div`
             height: 100px;
         }
     }
+    @media (max-width: 320px){
+        /* background-color: yellow; */
+        left: 82%;
+        top: 48%;
+        transform: translate(-80%, -48%);
+        width: 74%;
+        height: 80%;
+        .avatar{
+            margin-top: 10px;
+            width: 80px;
+            height: 80px;
+        }
+        .parent1{
+            margin-top: 10px;
+        }
+        label{
+            font-size: 14px
+        }
+        .div1{
+            margin-left: 5px;
+            /* background-color: green; */
+        }
+        .div2{
+            /* background-color: pink; */
+            margin-left: 5px;
+        }
+        .dota{
+            height: 30px;
+            margin: 5px 0;
+            width: 100%;
+            padding-left: 10px;
+            font-size: 15px;
+        }
+    }
 `;
+
+const insideStyle = withStyles({
+    label: {
+        color: '#fff',
+    }
+})
 
 const useStyles = makeStyles((theme) => ({
     cancel:{
@@ -126,8 +166,8 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '180px',
         marginRight: '-350px',
     },
-    edit:{
-        display: 'none',
+    update:{
+        // display: 'none',
         float: 'right',
         backgroundColor: 'red',
         position: 'relative',
@@ -137,6 +177,9 @@ const useStyles = makeStyles((theme) => ({
         marginRight: '30px', 
     },
     button: {
+        span :{
+            color: '#fff',
+        },
         margin: '10px 0',
         width: '350px',
         height: '40px',
@@ -146,7 +189,7 @@ const useStyles = makeStyles((theme) => ({
             width: '100%',
             height: '40px',
         },
-        edit:{
+        update:{
             width: '37%',
             marginTop: '27px',
             marginRight: '50px',    
@@ -167,12 +210,26 @@ const useStyles = makeStyles((theme) => ({
             width: '90%',
             height: '40px',
         },
-        edit:{
+        update:{
             transition: 'all 0.3s ease',
             marginTop: '30px',
             marginRight: '35px',    
         }
-    }
+    },
+    ['@media (max-width:320px)']: {
+        button: {
+            label:{
+                fontSize: '10px',
+            },
+            width: '100%',
+            height: '30px',
+        },
+        update:{
+            transition: 'all 0.3s ease',
+            marginTop: '30px',
+            marginRight: '35px',    
+        }
+    },
   }));
 
 function AdminProfile() {
@@ -223,7 +280,7 @@ function AdminProfile() {
                     variant="contained"
                     color="primary"
                     size="small"
-                    className={classes.edit}
+                    className={classes.update}
                     startIcon={<CreateRoundedIcon />}
                 >
                 Update
