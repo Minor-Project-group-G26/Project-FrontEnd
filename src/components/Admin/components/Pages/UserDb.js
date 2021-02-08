@@ -137,8 +137,10 @@ function UserDb() {
   const [Refresh, setRefresh] = useState(false)
 
   const AllUsersHandler = async () => {
-    console.log(`http://localhost:5000/users/${sessionStorage.getItem('ADMIN_TOKEN')}/${Page}`)
-    await Axios.get(`http://localhost:5000/users/${sessionStorage.getItem('ADMIN_TOKEN')}/${Page}`)
+    let search = "";
+    if(Search.length > 0) search = "/"+Search;
+    console.log(`http://localhost:5000/users/${sessionStorage.getItem('ADMIN_TOKEN')}/${Page+search}`)
+    await Axios.get(`http://localhost:5000/users/${sessionStorage.getItem('ADMIN_TOKEN')}/${Page+search}`)
       .then(result => {
         console.log(result);
         if(result.data.length > 0)
@@ -148,11 +150,13 @@ function UserDb() {
   }
 
   const NavigationHandler = async (preUser, nextUser) => {
+    let search = "";
+    if(Search.length > 0) search = "/"+Search;
     if (preUser) {
       console.log(preUser);
       console.log(nextUser);
-      const pre = await Axios.get(`http://localhost:5000/users/is/${preUser.id}/0`)
-      const next = await Axios.get(`http://localhost:5000/users/is/${nextUser.id}/1`)
+      const pre = await Axios.get(`http://localhost:5000/users/is/${preUser.id}/0${search}`)
+      const next = await Axios.get(`http://localhost:5000/users/is/${nextUser.id}/1${search}`)
       console.log(pre);
       console.log(next);
       setNavigation({
@@ -201,23 +205,20 @@ function UserDb() {
 
 
 
-  const SearchHandler = async (e) =>{
-    e.preventDefault()
-    console.log("Yes",Search)
-    const query = await Axios.get("http://127.0.0.1:5000/movie/searchall/"+Search);
-    console.log(query);
+  const SearchButtonHandler = (e) =>{
+    e.preventDefault();
+    console.log("Yes",Search);
+    SearchHandler()
   }
 
-    useEffect(() => {
-      fetch(`http://127.0.0.1:5000/movie/searchall/${Search}`)
-       .then(res => res.json())
-       .then(
-         (result) => {
-         console.log(result);
-           setItems(result);
-         }
-       )
-    }, [Search])
+  const SearchHandler = (e) =>{
+    setSearch(e.target.value)
+    setPage(0);
+    setRefresh(true);
+  }
+
+
+    
 
   const D_User = AllUser.map((data) => {
     return (
@@ -250,11 +251,11 @@ function UserDb() {
   return (
     <Boss>
       <Div1>
-        <form >
+        <form onSubmit={SearchButtonHandler}>
         <Fab type="submit" size="small" className="SearchBtn" color="primary" aria-label="add">
           <SearchIcon/>
         </Fab>
-        <SearchBar onChange={(e)=> setSearch(e.target.value)} type="search" name="search" placeholder="Search..." />
+        <SearchBar onChange={SearchHandler} type="search" name="search" placeholder="Search..." />
         </form>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
