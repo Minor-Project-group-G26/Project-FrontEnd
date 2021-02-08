@@ -133,11 +133,12 @@ function UserDb() {
   const [AllUser, setAllUser] = useState([]);
   const [Search, setSearch] = useState("")
   const [items, setItems] = useState([]);
+  const [Page, setPage] = useState(0)
   const [Refresh, setRefresh] = useState(false)
 
-  const AllUsersHandler = async (id=0, great=1) => {
-    console.log(`http://localhost:5000/users/${sessionStorage.getItem('ADMIN_TOKEN')}/${id}/${great}`)
-    await Axios.get(`http://localhost:5000/users/${sessionStorage.getItem('ADMIN_TOKEN')}/${id}/${great}`)
+  const AllUsersHandler = async () => {
+    console.log(`http://localhost:5000/users/${sessionStorage.getItem('ADMIN_TOKEN')}/${Page}`)
+    await Axios.get(`http://localhost:5000/users/${sessionStorage.getItem('ADMIN_TOKEN')}/${Page}`)
       .then(result => {
         console.log(result);
         if(result.data.length > 0)
@@ -166,7 +167,7 @@ function UserDb() {
     AllUsersHandler()
 
     return () => setRefresh(false)
-  }, [Refresh]);
+  }, [Refresh, Page]);
 
   useEffect(() => {
 
@@ -181,7 +182,7 @@ function UserDb() {
     formdata.append('email', email)
     
     await Axios({
-      url: `http://localhost:5000/users/${sessionStorage.getItem('ADMIN_TOKEN')}/${AllUser[0].id}/1`,
+      url: `http://localhost:5000/users/${sessionStorage.getItem('ADMIN_TOKEN')}/${AllUser[0].id}`,
       data: formdata,
       method: 'DELETE'
     }).then(res => {
@@ -191,22 +192,14 @@ function UserDb() {
         return console.log("fail to delete");
       console.log("delete");
       if(AllUser[0].id == id)
-      return AllUsersHandler(id, 0);
-      return AllUsersHandler(AllUser[0].id,1);
+      return setRefresh(true)
+      return setRefresh(true)
 
     }
     )
   }
 
-  const NavigateTable = (great) => {
-    const top = AllUser[0]
-    const bottom = AllUser[AllUser.length - 1]
-    console.log(great)
-    
-    if(great && Navigation.next) return AllUsersHandler(bottom.id+1, 1);
-    if(!great && Navigation.pre) return AllUsersHandler(top.id-1, 0);
-    return console.log("clicked");
-  }
+
 
   const SearchHandler = async (e) =>{
     e.preventDefault()
@@ -295,13 +288,13 @@ function UserDb() {
               <img 
               src="/Icons/left_arrow.svg" 
               width={50} height={50} 
-              onClick={()=> NavigateTable(0)} 
+              onClick={()=> setPage(Page-1)} 
               style={{ opacity: Navigation.pre? "1": "0.5" }} />
             </Grid>
             <Grid item>
               <img src="/Icons/right_arrow.svg" 
               width={50} height={50} 
-              onClick={()=> NavigateTable(1)} 
+              onClick={()=> setPage(Page+1)} 
               style={{ opacity: Navigation.next? "1": "0.5" }} />
             </Grid>
           </Grid>
