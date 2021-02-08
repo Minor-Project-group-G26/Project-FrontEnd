@@ -16,19 +16,28 @@ align-items:center;
 
 const ModalWrapper = styled.div`
 
-width:800px;
-height:500px;
-box-shadow:0 5px 16px rgba(0,0,0,0.2);
-background:#fff;
-color:#000;
-display:flex;
-/* grid-template-columns:1fr 1fr; */
-position:absolute;
-left: -800px;
-top: 16px;
-z-index:1000;
-border-radius:10px 0 0 10px;
+    width:800px;
+    height:500px;
+    box-shadow:0 5px 16px rgba(0,0,0,0.2);
+    background:#fff;
+    color:#000;
+    display:flex;
+    /* grid-template-columns:1fr 1fr; */
+    position:absolute;
+    left: -800px;
+    top: 16px;
+    z-index:-1;
+    border-radius:10px 0 0 10px;
 
+    @media (max-width: 540px){
+        margin-left: 130px;
+    }
+    @media (max-width: 768px){
+        margin-left: 128px;
+    }
+    @media (max-width: 1024px){
+        left: -694px;
+    }
 
 `;
 
@@ -38,7 +47,7 @@ position: relative;
 max-width: 500px;
 text-align: left;
 margin: 29px 10px 10px 10px;
-padding: 0;
+padding-left: 43px;
 color:#141414;
 
 span{

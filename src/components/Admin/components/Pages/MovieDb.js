@@ -21,6 +21,7 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 
 
 const Boss = styled.div`
+    
     margin-left: 260px;
     justify-content: center;
     align-items: center;
@@ -44,8 +45,10 @@ const Boss = styled.div`
 const Div1 = styled.div`
 
     margin-top: 0;
+    z-index: 0;
     position: relative;
     width: 98%;
+    height: 90%;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
@@ -56,7 +59,18 @@ const Div1 = styled.div`
       margin-right: 70px;
       margin-bottom: 5px;
       float: right;
-      z-index: 20000;
+    }
+    .BeginBtn{
+      margin-left: 70px;
+    }
+
+    @media (max-width: 768px){
+      .SearchBtn{
+        margin-right: 0px;
+      }
+      .BeginBtn{
+        margin-left: 0px;
+      }
     }
 `;
 
@@ -75,6 +89,11 @@ const SearchBar = styled.input`
         outline: none;
         box-shadow: 0px 0px 2px black;
     }
+  
+  @media (max-width: 570px){
+    width: 40%;
+  } 
+
 `;
 
 const Div2 = styled.div`
@@ -106,7 +125,7 @@ const Div2 = styled.div`
     text-align: center;
     text-decoration: none;
     color: #000;
-    z-index: 3;
+    z-index: 1;
     transition: all 0.5s ease;
   }
   &:before{
@@ -329,17 +348,16 @@ function MovieDb() {
     <Boss >
         
       <Div1 style={{overflowX:'auto'}}>
-        <Fab type="submit" onClick={()=>window.location.reload()} size="small" className="BeginBtn" color="secondary" aria-label="add">
-        <RefreshIcon />
-        </Fab>
-
-        <form onSubmit={SearchHandler}>
-        <Fab type="submit" onSubmit={SearchHandler} size="small" className="SearchBtn" color="primary" aria-label="add">
-          <SearchIcon/>
-        </Fab>
-        <SearchBar onChange={(e)=> setSearch(e.target.value)} type="search" name="search" placeholder="Search..." />
-        </form>
-    
+          <form onSubmit={SearchHandler}>
+            <Fab type="submit" onClick={()=>window.location.reload()} size="small" className="BeginBtn" color="primary" aria-label="add">
+              <RefreshIcon />
+            </Fab>
+            <Fab type="submit" onSubmit={SearchHandler} size="small" className="SearchBtn" color="primary" aria-label="add">
+              <SearchIcon/>
+            </Fab>
+            <SearchBar onChange={(e)=> setSearch(e.target.value)} type="search" name="search" placeholder="Search..." />
+          </form>       
+        
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="customized table">
 
