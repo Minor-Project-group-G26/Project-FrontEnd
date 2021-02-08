@@ -247,6 +247,7 @@ function MovieDb() {
       a:1
     })
     const [Search, setSearch] = useState("")
+    const [SearchBtn, setSearchBtn] = useState(false)
     const classes = useStyles();
     const [Popup, setPopup] = useState(false)
     const [items, setItems] = useState([]);
@@ -295,8 +296,9 @@ function MovieDb() {
     const SearchHandler = async (e) =>{
       e.preventDefault()
       console.log("Yes",Search)
-      const query = await Axios.get("http://127.0.0.1:5000/movie/searchall/"+Search);
-      console.log(query);
+      // const query = await Axios.get("http://127.0.0.1:5000/movie/searchall/"+Search);
+      // console.log(query);
+      setSearchBtn(true)
     }
 
       useEffect(() => {
@@ -308,7 +310,7 @@ function MovieDb() {
              setItems(result);
            }
          )
-      }, [Search])
+      }, [SearchBtn])
 
 
 
