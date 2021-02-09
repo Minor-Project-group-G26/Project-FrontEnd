@@ -36,7 +36,7 @@ function CardItem({Data}) {
         <CardMedia
           className={classes.media}
           image={Data.Poster ? `http://localhost:5000/get-file/MoviePoster/${Data.Poster}` : Logo}
-          title="Contemplative Reptile"
+          title={Data.Title}
         />
         <CardContent style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 
