@@ -47,6 +47,11 @@ const Div1 = styled.div`
       float: right;
       z-index: 20000;
     }
+    @media (max-width: 540px){
+      .SearchBtn{
+        margin-right: 0px;
+      }
+    }
 
 `;
 
@@ -62,9 +67,12 @@ const SearchBar = styled.input`
   font-family: 'Thasadith', sans-serif;
 
   &:focus {
-        outline: none;
-        box-shadow: 0px 0px 2px black;
-    }
+    outline: none;
+    box-shadow: 0px 0px 2px black;
+  }
+  @media (max-width: 540px){
+    width: 75%;
+  }
 `;
 
 const StyledTableCell = withStyles((theme) => ({

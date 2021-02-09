@@ -280,7 +280,6 @@ const CommentAddHandler = async() =>{
     }).then(res =>{
         console.log(res);
         MovieComments();
-
     })
 }
 

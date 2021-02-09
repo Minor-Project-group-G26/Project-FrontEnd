@@ -28,21 +28,17 @@ const MyForm = styled.form`
         color: #000;
         text-transform: uppercase;
     }
+    @media (max-width: 768px){
+        width: 68%;
+        margin-left: -48px;
+    }
 
-    @media screen and (max-width: 890px){
-        width: 600px;
-    }
-    @media screen and (max-width: 800px){
-        width: 550px;
-    }
-    @media screen and (max-width: 780px){
-        width: 520px;
-    }
-    @media screen and (max-width: 750px){
-        width: 500px;
-    }
-    @media screen and (max-width: 600px){
-        width: 350px;
+    @media (max-width: 500px){
+        width: 78%;
+        margin-left: -2px;
+        h1{
+            font-size: 20px;
+        }
     }
 
 `;
@@ -63,6 +59,9 @@ const Myinput = styled.input`
     transition: 0.25s;
     &:focus{
         color: #444444;
+    }
+    @media (max-width: 320px){
+
     }
 
 `
