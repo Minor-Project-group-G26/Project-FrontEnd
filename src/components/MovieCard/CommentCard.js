@@ -12,14 +12,16 @@ const useStyle = makeStyles((theme) =>({
 
 function CommentCard({Comment}) {
     const classes = new useStyle();
+    console.log("first", Comment)
+
     return (
         <div className={"commentCard"} style={{ display: 'flex', flexDirection: 'column', padding: 16, borderTop: '1px solid #666666', borderBottom: '1px solid #666666' }}>
             <div className="header" style={{ fontSize: 26, padding: 8, borderBottom: '1px solid #a6a6a6', display: 'flex', justifyContent:"space-between", alignItems: 'center' }}>
             <div style={{ display: 'flex', justifyContent:"flex-start", alignItems: 'center' }}>
-                <Avatar src={`http://127.0.0.1:5000/get-file/users/${Comment.userProfile}`} className={classes.Avatar}>{Comment.userProfile[0]}</Avatar>
+                <Avatar src={`http://127.0.0.1:5000/get-file/users/${Comment.userProfile}`} className={classes.Avatar}>{Comment.username[0]}</Avatar>
                 <h3>{Comment.username} </h3>
             </div>
-                <p> Rating: {Comment.rating}</p>
+                
             </div>
             <div className="comment" style={{ fontSize: 18, color: '#eee', padding: 8 }}>
                 <p>{Comment.comment}</p>

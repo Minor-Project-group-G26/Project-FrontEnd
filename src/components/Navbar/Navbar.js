@@ -235,19 +235,7 @@ function Navbar(props) {
     return(<li><div className="navLink"><NavLink exact to='/user/profile' className='Link'>Profile</NavLink></div></li>)
     return(<li><div className="navLink"><NavLink exact to='/user/signup' className='Link'>Signup</NavLink></div></li>)
   }
-  useEffect(() => {
-    // window.addEventListener('scroll',()=>{
-    //   let scrollTimer = -1;
-    //   let scroll = window.scrollY;
-    //   if (scrollTimer !== -1)
-    //       clearTimeout(scrollTimer);
-    //   document.getElementById('header').style.opacity = ""+1/scroll*100;
-    //   scrollTimer =  window.setTimeout(()=>{
-    //     document.getElementById('header').style.opacity = '1';
-    //   }, 1000);
-    // })
-    console.log(props.LoginUser)
-  },[])
+
 
   const SearchMovieHandler =()=>{
     if(SearchText.length > 0){

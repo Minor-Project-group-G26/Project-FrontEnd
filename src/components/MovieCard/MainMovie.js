@@ -265,7 +265,7 @@ function MainMovie(props) {
     const history = useHistory()
 
     const {id} = useParams() 
-
+    const [Page, setPage] = useState(1)
 //Use States
 
 const [Mdata, setMdata] = useState({
@@ -293,7 +293,7 @@ const CommentAddHandler = async() =>{
     formdata.append("token", localStorage.getItem('USER_TOKEN'));
     await Axios({
         method: 'POST',
-        url: `http://localhost:5000/movies/${Mdata.movieId}/comments`,
+        url: `http://localhost:5000/movies/${Mdata.movieId}/comments/${Page}`,
         data: formdata
     }).then(res =>{
         console.log(res);
@@ -304,7 +304,7 @@ const CommentAddHandler = async() =>{
 const MovieComments = async()=>{
     await Axios({
         method: 'GET',
-        url: `http://localhost:5000/movies/${Mdata.movieId}/comments`
+        url: `http://localhost:5000/movies/${Mdata.movieId}/comments/${Page}`
     }).then(res =>{
         console.log(res);
         setComments(res.data)
@@ -366,14 +366,14 @@ const PlanVerifyHandler = async() =>{
 
 
 useEffect(() => {
-window.scroll(0,0);
+console.log("Page" +Page);
 console.log("What :",id);
 if(!LogInCheck()) 
 return history.push("/user/signin");
 DataDisplay();
 MovieComments();
 PlanVerifyHandler();
-},[id]);
+},[id, Page]);
 
 useEffect(()=>{
     if(Mdata.movieName != "")
@@ -384,6 +384,7 @@ ecom();
     const PageXML = (
         <main style={{ marginTop: 0, paddingTop: 0}}>
             <Content>
+                
                 <div className="TopPush"></div>
                 <Poster>
                         <img style={{borderRadius: '12px'}} src={Mdata.moviePoster!= null? `http://127.0.0.1:5000/get-file/MoviePoster/${Mdata.moviePoster}`: ""} height="510px" width="450px" alt={Mdata.Title} />                            
@@ -451,6 +452,8 @@ ecom();
                         className={classes.showmore}
                         variant="contained"
                         color="default"
+                        disabled={Page*5 == Comments.length?false:true}
+                        onClick={()=> setPage(Page+1)}
                         startIcon={<ArrowDropDownIcon />}
                     >
                         Show More
