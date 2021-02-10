@@ -292,7 +292,10 @@ function MovieDb() {
       await sleep(5000);
       window.location.reload()
     }
-    
+    const SearchData = async(e)=>{
+      setSearch(e.target.value)
+      setSearchBtn(false)
+    }
     const SearchHandler = async (e) =>{
       e.preventDefault()
       console.log("Yes",Search)
@@ -357,7 +360,7 @@ function MovieDb() {
             <Fab type="submit" onSubmit={SearchHandler} size="small" className="SearchBtn" color="primary" aria-label="add">
               <SearchIcon/>
             </Fab>
-            <SearchBar onChange={(e)=> setSearch(e.target.value)} type="search" name="search" placeholder="Search..." />
+            <SearchBar onChange={SearchData} type="search" name="search" placeholder="Search..." />
           </form>       
         
         <TableContainer component={Paper}>
