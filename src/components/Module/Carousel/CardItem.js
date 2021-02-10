@@ -13,12 +13,15 @@ import {
 import Logo from './logo.svg'
 import { loadCSS } from 'fg-loadcss';
 import { CaroStyles } from './Styles'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 
 
 function CardItem({Data}) {
   const classes = CaroStyles();
+  const history = useHistory()
+  const CardClickHandler = ()=> history.push("/movie/" + Data.Id, {update: true}) 
+
   useEffect(() => {
     const node = loadCSS(
       'https://use.fontawesome.com/releases/v5.12.0/css/all.css',
@@ -28,10 +31,9 @@ function CardItem({Data}) {
     return () => {
       node.parentNode.removeChild(node);
     };
-  }, []);
+  });
   return (
-    <Link style={{textDecoration: 'none'}} to={"/movie/" + Data.Id} >
-    <Card key={Data.Id} className={classes.root} >
+    <Card onClick={CardClickHandler} key={Data.Id} className={classes.root} >
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -54,7 +56,6 @@ function CardItem({Data}) {
         </CardContent>
       </CardActionArea>
     </Card>
-    </Link>
   );
 }
 

@@ -265,7 +265,6 @@ function MainMovie(props) {
     const history = useHistory()
 
     const {id} = useParams() 
-    console.log("What :",id)
 
 //Use States
 
@@ -331,7 +330,7 @@ const GetRecomData = async(Movie,t) =>{
   }
 
 const DataDisplay = async()=>{
-await fetch("http://localhost:5000/movieuser/"+Mdata.movieId)
+await fetch("http://localhost:5000/movieuser/"+id)
 .then(res => res.json())
 .then(
 res => {
@@ -347,10 +346,7 @@ res => {
     moviePro: res.Producer,
    });
    console.log(res);
-}
-
-)
-
+})
 }
 
 const LogInCheck = () =>{
@@ -368,19 +364,21 @@ const PlanVerifyHandler = async() =>{
         )
 }
 
+
 useEffect(() => {
+window.scroll(0,0);
+console.log("What :",id);
 if(!LogInCheck()) 
-return window.location.href = "/user/signin";
-window.scrollTo(0, 0);
+return history.push("/user/signin");
 DataDisplay();
 MovieComments();
 PlanVerifyHandler();
-}, []);
+},[id]);
 
 useEffect(()=>{
     if(Mdata.movieName != "")
 ecom();
-},[Mdata])
+},[Mdata]);
 
 
     const PageXML = (
@@ -488,4 +486,4 @@ ecom();
     )
 }
 
-export default MainMovie
+export default MainMovie;

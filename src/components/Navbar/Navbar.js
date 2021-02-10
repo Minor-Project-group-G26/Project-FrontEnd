@@ -251,7 +251,8 @@ function Navbar(props) {
 
   const SearchMovieHandler =()=>{
     if(SearchText.length > 0){
-      window.location.href = ('/movie/search/'+SearchText)
+      // window.location.href = ('/movie/search/'+SearchText)
+      history.push('/movie/search/'+SearchText, {update: true})
     }
   }
 
@@ -337,4 +338,4 @@ function readOutLoud(message) {
     )
 }
 
-export default Navbar
+export default Navbar;

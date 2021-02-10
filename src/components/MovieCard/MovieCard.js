@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {BsStarFill} from 'react-icons/bs'
+import { Link } from 'react-router-dom';
 
 const Card = styled.div`
 
@@ -99,7 +100,7 @@ function MovieCard() {
                     <span style={{paddingTop:0,fontSize:24}}>{data.Rate}</span>
                 </div>
                 <div className="Down">
-                    <a style={{textDecoration: 'none'}} href={"movie/"+data.Id}><StyledButton >Watch</StyledButton></a>
+                    <Link to={"movie/"+data.Id} style={{textDecoration: 'none'}}><StyledButton >Watch</StyledButton></Link>
                 </div>
             </div>
                
