@@ -1,8 +1,10 @@
 import { Avatar, Button, makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
+import Axios from 'axios';
 import CachedRoundedIcon from '@material-ui/icons/CachedRounded';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
+import CustomModal from '../../../Module/Modal/CustomModal';
 
 const Boss = styled.div`
     background-color: rgba(0,0,0, 0.8);
@@ -57,6 +59,23 @@ const Boss = styled.div`
         font-family: 'Fraunces', serif;
     }
 
+    .header{
+        position: relative;
+    }
+
+    .file{
+        position: absolute;
+        opacity: 0;
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        outline: none;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 1;
+    }
+
     @media (max-width: 1317px){
         .div2{
             width: 90%;
@@ -73,6 +92,10 @@ const Boss = styled.div`
             width: 120px;
             height: 120px;
         }
+        .file{
+            width: 120px;
+            height: 120px;
+        }
     }
     @media (max-width: 990px){
         .dota{
@@ -82,6 +105,10 @@ const Boss = styled.div`
             margin-left: 30px;
         }
         .avatar{
+            width: 120px;
+            height: 120px;
+        }
+        .file{
             width: 120px;
             height: 120px;
         }
@@ -95,6 +122,10 @@ const Boss = styled.div`
             width: 100px;
             height: 100px;
         }
+        .file{
+            width: 100px;
+            height: 100px;
+        }
     }
     @media (max-width: 625px){
         .parent1{
@@ -102,6 +133,10 @@ const Boss = styled.div`
             margin-left: 8px;
         }
         .avatar{
+            width: 100px;
+            height: 100px;
+        }
+        .file{
             width: 100px;
             height: 100px;
         }
@@ -117,6 +152,11 @@ const Boss = styled.div`
             margin-top: 10px;
             width: 80px;
             height: 80px;
+        }
+        .file{
+            margin-top: 10px;
+            width: 80px;
+            height: 100px;
         }
         .parent1{
             margin-top: 10px;
@@ -243,35 +283,129 @@ function AdminProfile() {
     const classes = useStyles();
     
 
-    return (
+    const LoginCheck =()=>{
+        if(!sessionStorage.getItem("ADMIN_TOKEN") && !sessionStorage.getItem("ADMIN_NAME"))return(window.location.replace("http://localhost:3000/admin"))
+        return true;
+    }
+
+    useEffect(() => {
+        LoginCheck();
+        FetchData();
+      }, []);
+
+    const [ProfileImage, setProfileImage] = useState(null)
+    const [Modal, setModal] = useState(false) 
+    const [error, setError] = useState("") 
+
+    const [Profile, setProfile] = useState({
+        username: "",
+        phone: "",
+        email: "",
+        image: ""
+    })
+
+    const PreviewHandler = async(e) =>{
+        
+        const reader = new FileReader();
+        // console.log(imageRef.current.files[0])
+        setProfileImage(e.target.files[0]);
+        reader.onload = () =>{
+            if(reader.readyState === 2)
+            setProfile({...Profile, image: reader.result})
+        }
+        reader.readAsDataURL(e.target.files[0])
+    }
+    
+    const FetchData = async()=>{
+
+        await fetch("http://localhost:5000/admin/profile/"+sessionStorage.getItem("ADMIN_TOKEN"))
+        .then(res => res.json())
+        .then(
+        res => {
+            setProfile({
+                username: res.name,
+                image: res.profileImage!=null?`http://127.0.0.1:5000/get-file/admin/${res.profileImage}`: "",
+                phone: res.phone,
+                email: res.email
+            });
+            console.log("Admin Detail",res);
+        }
+     
+    )
+ 
+    }
+
+    const UpdateHandler = async() =>{
+        console.log('changed');
+        const formdata = new FormData();
+        formdata.append('name', Profile.username);
+        formdata.append('email', Profile.email);
+        formdata.append('phone', Profile.phone);
+        formdata.append('profileImage', ProfileImage);
+        console.log(ProfileImage)
+        console.log(formdata.get('name'), formdata.get('email'), formdata.get('phone'), formdata.get("profileImage"))
+        const res = await Axios({ 
+            method  : 'PUT', 
+            url : `http://127.0.0.1:5000/admin/profile/${sessionStorage.getItem("ADMIN_TOKEN")}`, 
+            data : formdata, 
+            headers : {'Content-Type': "multipart/form-data"}
+          })
+        console.log(res);
+        
+        setModal(true)
+      }
+
+      const ResetHandler = (e) =>{
+        e.preventDefault()
+        console.log(Profile)
+        const formdata = new FormData()
+        formdata.append("email", Profile.email)
+        formdata.append("phone", Profile.phone)
+        Axios.put("http://127.0.0.1:5000/admin/forget", formdata)
+        .then(res => (res.data))
+        .then(data => {
+            console.log(data);
+            const {errors, success} = data;
+
+            if(errors){
+                
+                setError(errors)
+                return false;
+            }
+            // localStorage.setItem('USER_TOKEN', success.token);
+            // localStorage.setItem('USER_NAME', success.name);
+            sessionStorage.setItem('tokenId', success);
+            return window.location.replace("../reset/"+success);
+        })
+    }
+
+    const page = (
         <Boss>
-            <div>
-            <Avatar 
-              className="avatar"
-                src="" 
-                alt="" 
-            />
+            <div className="header">
+                <input type="file" onChange={PreviewHandler} className="file"/>
+                <Avatar className="avatar" src={Profile.image} > {Profile.username[0]} </Avatar>
             </div>
             <div className="parent1">
                 <div className="div1">
                     <label>Username</label>
-                    <div><input className="dota" type="text" /></div>
+                    <div><input onChange={(e)=> setProfile({...Profile, username: e.target.value})} className="dota" type="text" value={Profile.username} /></div>
                 </div>
                 <div className="div2">
                     <label>Email</label>
-                    <div><input className="dota" type="email" /></div>
+                    <div><input onChange={(e)=> setProfile({...Profile, email: e.target.value})} className="dota" type="email" value={Profile.email} /></div>
                 </div>
                 
             </div>
             <div className="parent1">
                 <div className="div1">
                     <label>Phone</label>
-                    <div><input className="dota" type="text" /></div>
+                    <div><input onChange={(e)=> setProfile({...Profile, phone: e.target.value})} className="dota" type="text" value={Profile.phone} /></div>
                 </div>
                 <div className="div2">
                     <label>Reset Password</label>
                     <div>
                         <Button
+                            onClick={ResetHandler}
                             className={classes.button} 
                             variant="outlined"
                             color="primary"
@@ -283,6 +417,7 @@ function AdminProfile() {
                 </div>
             </div>
                 <Button
+                    onClick={UpdateHandler}
                     variant="contained"
                     color="primary"
                     size="small"
@@ -294,6 +429,22 @@ function AdminProfile() {
 
    
         </Boss>
+    )  
+    
+
+    return (
+        <>
+            {Modal?
+            (<CustomModal 
+                open={Modal}
+                text="Successfully Updated"
+                icon="update"
+                onClose={() => setModal(false)}
+            />)
+            :
+            page
+            }
+        </>
     )
 }
 

@@ -6,8 +6,9 @@ import Axios from "axios";
 import CustomModal from "../Module/Modal/CustomModal"
 import CommentCard from './CommentCard';
 import CardItem from '../Module/Carousel/CardItem';
-import { Grid, Typography } from '@material-ui/core';
+import { Avatar, Button, makeStyles } from '@material-ui/core';
 import Carosuel from '../Module/Carousel/Carosuel';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 const Poster = styled.div`
     position: relative;
@@ -208,6 +209,22 @@ const StyledButton = styled.button`
   }
 `;
 
+const useStyles = makeStyles((theme) => ({
+
+    showmore: {
+        backgroundColor: '#020024',
+        width: '100%',
+        color: '#00bfb6',
+        border: '2px solid #00bfb6', 
+
+        '&:hover': {
+            backgroundColor: "#00bfb6",
+            color: '#fff',
+        }
+    }
+
+}));
+
 
 const data = [{
     id: 0,
@@ -240,6 +257,8 @@ const data = [{
 }];
 
 function MainMovie(props) {
+
+    const classes = useStyles();
     const [Modal, setModal] = useState(false)
     const [Recom, setRecom] = useState([])
 
@@ -430,6 +449,14 @@ ecom();
                    ))}
                 
                     </div>
+                    <Button
+                        className={classes.showmore}
+                        variant="contained"
+                        color="default"
+                        startIcon={<ArrowDropDownIcon />}
+                    >
+                        Show More
+                    </Button> 
                 </div>
                 
                 <div style={{margin: '2.5rem auto'}}>
