@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BsStarFill } from 'react-icons/bs'
-import { useParams } from 'react-router-dom'
+import { useParams,Link } from 'react-router-dom'
 
 const Card = styled.div`
 
@@ -85,7 +85,7 @@ function Search(props) {
                 })
             .catch(e => setItems([]))
 
-    });
+    },[query]);
 
     const Film = () => items.length == 0 ?
         (<h1 style={{ color: "#eee", fontSize: 28 }}>Movie Not found</h1>) :
@@ -104,7 +104,7 @@ function Search(props) {
                             <span style={{ paddingTop: 0, fontSize: 24 }}>{data.Rate}</span>
                         </div>
                         <div className="Down">
-                            <a style={{ textDecoration: 'none' }} href={"../../movie/" + data.Id}><StyledButton >Watch</StyledButton></a>
+                            <Link style={{ textDecoration: 'none' }} to={"../../movie/" + data.Id}><StyledButton >Watch</StyledButton></Link>
                         </div>
                     </div>
 

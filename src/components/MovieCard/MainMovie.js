@@ -293,7 +293,7 @@ const CommentAddHandler = async() =>{
     formdata.append("token", localStorage.getItem('USER_TOKEN'));
     await Axios({
         method: 'POST',
-        url: `http://localhost:5000/movies/${Mdata.movieId}/comments/${Page}`,
+        url: `http://localhost:5000/movies/${id}/comments/${Page}`,
         data: formdata
     }).then(res =>{
         console.log(res);
@@ -304,7 +304,7 @@ const CommentAddHandler = async() =>{
 const MovieComments = async()=>{
     await Axios({
         method: 'GET',
-        url: `http://localhost:5000/movies/${Mdata.movieId}/comments/${Page}`
+        url: `http://localhost:5000/movies/${id}/comments/${Page}`
     }).then(res =>{
         console.log(res);
         setComments(res.data)
