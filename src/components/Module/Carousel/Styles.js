@@ -43,7 +43,7 @@ export const CaroStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         overflow: 'hidden',
         display: '-webkit-box',
-        
+        paddingRight: 10 
     }
 
 }));

@@ -284,7 +284,7 @@ function readOutLoud(message) {
         <span className='mobile' onClick={mobileMenuHandler}><Menu /></span>
         <Grid container id='menu' className='container'>
           <Grid item md={2} sm={4} xs={12} className={classes.chlidContainer}>
-          <div className="wrapper"><a href="/"><h3>Motion Pictures</h3></a></div>
+          <div className="wrapper"><Link to="/"><h3>Motion Pictures</h3></Link></div>
           </Grid>
           <Grid item xs={12} sm={8} md={5} className={classes.Search}>
           <div className={classes.SearchInput}>
