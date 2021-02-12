@@ -20,6 +20,7 @@ import Search from './components/Search/Search'
 import ForgetPassword from './components/Signin/ForgetPassword'
 import ResetPassword from './components/Signin/ResetPassword'
 import Card from './components/Module/test/Card'
+import About from './components/Extras/About'
 
 
 const useStyles = makeStyles(theme=>({
@@ -82,6 +83,9 @@ function UserRoute() {
           </Route>
           <Route exact path='/user/reset/:tokenId'>
             <ResetPassword />
+          </Route>
+          <Route exact path='/about'>
+            <About />
           </Route>
          
           <Route exact path='/:404'>
