@@ -21,6 +21,8 @@ import ForgetPassword from './components/Signin/ForgetPassword'
 import ResetPassword from './components/Signin/ResetPassword'
 import Card from './components/Module/test/Card'
 import About from './components/Extras/About'
+import Support from './components/Extras/Support'
+import Report from './components/Extras/Report'
 
 
 const useStyles = makeStyles(theme=>({
@@ -86,6 +88,12 @@ function UserRoute() {
           </Route>
           <Route exact path='/about'>
             <About />
+          </Route>
+          <Route exact path='/support'>
+            <Support />
+          </Route>
+          <Route exact path='/report'>
+            <Report />
           </Route>
          
           <Route exact path='/:404'>

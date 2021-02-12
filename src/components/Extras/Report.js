@@ -10,8 +10,11 @@ const Boss = styled.div`
     border-radius: 14px;
     justify-content: center;
     align-items: center;
+    display: flex;
 
     .inner{
+        justify-content: center;
+        align-items: center;
         padding: 40px 20px;
         margin-top: 15px;
         h1{
@@ -38,20 +41,14 @@ const Boss = styled.div`
 
 `;
 
-function About() {
+function Report() {
     return (
         <main>
         <Boss>
             <div className="inner">
-                <h1>About Us</h1>
+                <h1> This Page is Under Construction !!</h1>
                 <label>
-                    The project named “Motion Picture” is a project written in React as a Front-End 
-                    support managed by Flask and Sqlite from Back-End. The basic idea for this project
-                    is to remove the unwanted questioning after a Review done by a User to get rating
-                    of that Movie. Instead of that our team 
-                    (Jeetesh Kumar Shaw, Gourav Singh, Ankur Majumdar, Nisha Ghosh) 
-                    consulted with our Guide (Prof. Avik Chatterjee) to create an OTT platform that would 
-                    generate a rating on the basis of Review given by a User. 
+                    
                 </label>
             </div>
         </Boss>
@@ -59,4 +56,4 @@ function About() {
     )
 }
 
-export default About
+export default Report

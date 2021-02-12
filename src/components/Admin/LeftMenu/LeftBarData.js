@@ -13,11 +13,11 @@ export const LeftBarData = [
     icon: <AccountCircleIcon />,
     link: "/admin/dashboard/profile",
   },
-  {
-    title: "Analitics",
-    icon: <AssessmentIcon />,
-    link: "/admin/dashboard/graph",
-  },
+  // {
+  //   title: "Analitics",
+  //   icon: <AssessmentIcon />,
+  //   link: "/admin/dashboard/graph",
+  // },
   {
     title: "Users",
     icon: <GroupIcon />,
@@ -30,17 +30,17 @@ export const LeftBarData = [
   },
   {
     title: "Add Cast",
-    icon: <MovieFilterIcon />,
+    icon: <NoteAddIcon />,
     link: "/admin/dashboard/movie/cast"
   },
   {
     title: "Add Director",
-    icon: <MovieFilterIcon />,
+    icon: <NoteAddIcon />,
     link: "/admin/dashboard/movie/director"
   },
   {
     title: "Add Genres",
-    icon: <MovieFilterIcon />,
+    icon: <NoteAddIcon />,
     link: "/admin/dashboard/add/category"
   },
   {

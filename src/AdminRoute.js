@@ -57,10 +57,10 @@ function AdminRoute() {
                   <LeftBar />
                   <AdminProfile />
                 </Route>
-                <Route path='/admin/dashboard/graph' exact>
+                {/* <Route path='/admin/dashboard/graph' exact>
                   <LeftBar />
                   <BarGraph />
-                </Route>
+                </Route> */}
                 <Route path='/admin/dashboard/movie/add' exact>
                   <LeftBar/> 
                   <AddMovie2/>

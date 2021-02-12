@@ -38,12 +38,12 @@ const Boss = styled.div`
 
 `;
 
-function About() {
+function Support() {
     return (
         <main>
         <Boss>
             <div className="inner">
-                <h1>About Us</h1>
+                <h1>Support</h1>
                 <label>
                     The project named “Motion Picture” is a project written in React as a Front-End 
                     support managed by Flask and Sqlite from Back-End. The basic idea for this project
@@ -59,4 +59,4 @@ function About() {
     )
 }
 
-export default About
+export default Support

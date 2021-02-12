@@ -91,7 +91,7 @@ function Login() {
             sessionStorage.setItem("ADMIN_NAME", success.name);
             // localStorage.setItem("ADMIN_TOKEN", success.token);
             // localStorage.setItem("ADMIN_NAME", success.name);
-            return window.location.href = "http://localhost:3000/admin/dashboard";
+            return window.location.href = "http://localhost:3000/admin/dashboard/user/db";
         })
     }
 
