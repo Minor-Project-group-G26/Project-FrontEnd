@@ -69,12 +69,12 @@ const StyledButton = styled.button`
 `;
 
 
-function Search(props) {
+function SearchGen(props) {
 
-    const { query } = useParams();
+    const { type } = useParams();
     const [items, setItems] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/movie/search/" + query)
+        fetch("http://localhost:5000/categories/" + type)
             .then(res => {
                 return res.json();
             })
@@ -85,7 +85,7 @@ function Search(props) {
                 })
             .catch(e => setItems([]))
 
-    },[query]);
+    },[type]);
 
     const Film = () => items.length === 0 ?
         (<h1 style={{ color: "#eee", fontSize: 28 }}>Movie Not found</h1>) :
@@ -104,7 +104,7 @@ function Search(props) {
                             <span style={{ paddingTop: 0, fontSize: 24 }}>{data.Rate}</span>
                         </div>
                         <div className="Down">
-                            <Link style={{ textDecoration: 'none' }} to={"../../movie/" + data.Id}><StyledButton >Watch</StyledButton></Link>
+                            <Link style={{ textDecoration: 'none' }} to={"/movie/" + data.Id}><StyledButton >Watch</StyledButton></Link>
                         </div>
                     </div>
 
@@ -120,4 +120,4 @@ function Search(props) {
     )
 }
 
-export default Search;
+export default SearchGen;

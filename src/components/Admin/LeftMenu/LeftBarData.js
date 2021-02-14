@@ -1,8 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import MovieIcon from '@material-ui/icons/Movie';
-import AssessmentIcon from "@material-ui/icons/Assessment";
 import GroupIcon from "@material-ui/icons/Group";
 import MovieFilterIcon from '@material-ui/icons/MovieFilter';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';

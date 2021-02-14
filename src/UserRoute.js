@@ -10,8 +10,6 @@ import Signin from './components/Signin/Signin'
 import Category from './components/Homepage/Category'
 import Plan from './components/Plan/Plan'
 import Profile from './components/Profile/Profile'
-// import Admin from './components/Admin/Admin'
-// import Login from './components/Admin/Login'
 import { makeStyles } from '@material-ui/core'
 import CustomModal from './components/Module/Modal/CustomModal'
 import MovieCard from './components/MovieCard/MovieCard'
@@ -19,10 +17,10 @@ import MainMovie from './components/MovieCard/MainMovie'
 import Search from './components/Search/Search'
 import ForgetPassword from './components/Signin/ForgetPassword'
 import ResetPassword from './components/Signin/ResetPassword'
-import Card from './components/Module/test/Card'
 import About from './components/Extras/About'
 import Support from './components/Extras/Support'
 import Report from './components/Extras/Report'
+import SearchGen from './components/Search/SearchGen'
 
 
 const useStyles = makeStyles(theme=>({
@@ -46,7 +44,7 @@ function UserRoute() {
       setLoginUser(true);
     }
     return ()=> {setLoginUser(false);}
-  },[])
+  })
 
   return (
     <Router>
@@ -57,22 +55,27 @@ function UserRoute() {
         <Navbar LoginUser={LoginUser} />
 
         <Switch>
-          <Route path='/' exact  component={Homepage} />
+          <Route path='/' exact >
+          <Homepage LoginUser={LoginUser} />
+          </Route>
           <Route exact path='/category' component={Category} />
           <Route exact path='/plan' >
             <Plan LoginUser={LoginUser} />
           </Route>
-          <Route exact path='/user/signup' component={Signup} />
+          <Route exact path='/user/signup' ><Signup LoginUser={LoginUser} /></Route>
           <Route exact path='/user/signin' >
             <Signin LoginUser={LoginUser} />
           </Route>
           <Route exact path='/user/profile' component={Profile} />
           
-          <Route exact path='/modal' >
+          {/* <Route exact path='/modal' >
             <main><CustomModal /></main>
-          </Route>
+          </Route> */}
           <Route exact path='/movie'>
             <main><MovieCard /></main>
+          </Route>
+          <Route exact path='/categories/:type'>
+            <SearchGen />
           </Route>
           <Route  exact path='/movie/:id'>
             <MainMovie LoginUser={LoginUser} />

@@ -1,24 +1,13 @@
-import { TextField, Button, Checkbox, FormControlLabel, withStyles, FormHelperText, FormControl } from '@material-ui/core'
+import { TextField, Button, Checkbox, withStyles, FormHelperText, FormControl } from '@material-ui/core'
 import React, { useState } from 'react'
 import {Link, useParams} from 'react-router-dom'
 import './LoginPage.css'
-import { grey } from '@material-ui/core/colors';
 import Axios from 'axios';
 import { signStyle } from './Style';
 // material ui stylesheet
 
 
 // custom stylesheet for check-box
-const GreyCheckbox = withStyles({
-    root: {
-        color: grey[400],
-        '&$checked': {
-            color: grey[600],
-        },
-    },
-    checked: {},
-})((props) => <Checkbox color="default" {...props} />);
-
 
 //............Sign Up Form Handler
 
@@ -29,11 +18,7 @@ function ResetPass() {
     const {tokenId} = useParams()
     //............... state/variable initialization 
     const classes = signStyle()
-    // check-box state
-    const [state, setState] = useState({
-
-        TC: false,
-    });
+    
     // New Admin state
     const [Admin, setAdmin] = useState({
         password: '',

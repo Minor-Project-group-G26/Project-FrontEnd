@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { motion } from "framer-motion";
 
 import Carosuel from '../Module/Carousel/Carosuel';
-import { makeStyles, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import Axios from 'axios'; 
 import {HomeStyles} from './Style'
 
@@ -35,7 +35,7 @@ const MovieData = [{
 }]
 
 
-function Homepage() {
+function Homepage({LoginUser}) {
   const classes = HomeStyles()
   const [DramaMovieData, setDramaMovieData] = useState([]);
   const [HorrorMovieData, setHorrorMovieData] = useState([]);
@@ -61,7 +61,7 @@ function Homepage() {
       GetMovieData(setHorrorMovieData,'Horror');
       GetMovieData(setDramaMovieData,'Drama');
       // console.log()
-  },[])
+  })
   return (
     <main>
       <div className={classes.banner}>
@@ -73,7 +73,7 @@ function Homepage() {
         </div>
         <motion.div animate={{ scale: 2 }} transition={{ duration: 0.5 }}>
           <div className={("center", classes.getStarted)}>
-            <Link to='/user/signup' className={classes.getStartedBtn}>GET STARTED</Link>
+            <Link to={LoginUser?"/movie":'/user/signup'} className={classes.getStartedBtn}>GET STARTED</Link>
           </div>
         </motion.div>
 

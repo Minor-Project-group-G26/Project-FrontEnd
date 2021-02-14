@@ -5,8 +5,7 @@ import {useHistory, useParams} from 'react-router-dom';
 import Axios from "axios";
 import CustomModal from "../Module/Modal/CustomModal"
 import CommentCard from './CommentCard';
-import CardItem from '../Module/Carousel/CardItem';
-import { Avatar, Button, makeStyles } from '@material-ui/core';
+import { Button, makeStyles } from '@material-ui/core';
 import Carosuel from '../Module/Carousel/Carosuel';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
@@ -226,36 +225,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const data = [{
-    id: 0,
-    Title: "React1",
-    Rate: 7.5
-},{
-    id: 1,
-    Title: "React2",
-    Rate: 7.5
-},{
-    id: 2,
-    Title: "React3",
-    Rate: 7.5
-},{
-    id: 3,
-    Title: "React4",
-    Rate: 7.5
-},{
-    id: 4,
-    Title: "React5",
-    Rate: 7.5
-},{
-    id: 5,
-    Title: "React6",
-    Rate: 7.5
-},{
-    id: 6,
-    Title: "React7",
-    Rate: 7.5
-}];
-
 function MainMovie(props) {
 
     const classes = useStyles();
@@ -320,7 +289,7 @@ const ecom = async()=>{
 const GetRecomData = async(Movie,t) =>{
     try {
       const res = await Axios.get(`http://localhost:5000/recom/${t}`)
-      console.log(data);
+      console.log(res.data);
       Movie(res.data);
       return true;
     } catch (error) {
@@ -376,7 +345,7 @@ PlanVerifyHandler();
 },[id, Page]);
 
 useEffect(()=>{
-    if(Mdata.movieName != "")
+    if(Mdata.movieName !== "")
 ecom();
 },[Mdata]);
 
@@ -387,7 +356,7 @@ ecom();
                 
                 <div className="TopPush"></div>
                 <Poster>
-                        <img style={{borderRadius: '12px'}} src={Mdata.moviePoster!= null? `http://127.0.0.1:5000/get-file/MoviePoster/${Mdata.moviePoster}`: ""} height="510px" width="450px" alt={Mdata.Title} />                            
+                        <img style={{borderRadius: '12px'}} src={Mdata.moviePoster!== null? `http://127.0.0.1:5000/get-file/MoviePoster/${Mdata.moviePoster}`: ""} height="510px" width="450px" alt={Mdata.Title} />                            
                 </Poster>              
                 <div className="parent">
                     <div className="title both">
@@ -452,7 +421,7 @@ ecom();
                         className={classes.showmore}
                         variant="contained"
                         color="default"
-                        disabled={Page*5 == Comments.length?false:true}
+                        disabled={Page*5 === Comments.length?false:true}
                         onClick={()=> setPage(Page+1)}
                         startIcon={<ArrowDropDownIcon />}
                     >

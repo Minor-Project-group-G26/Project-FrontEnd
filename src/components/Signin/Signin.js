@@ -1,4 +1,4 @@
-import { TextField, Button, Checkbox, FormControlLabel, withStyles, FormHelperText, FormControl } from '@material-ui/core'
+import { TextField, Button, Checkbox, withStyles, FormHelperText, FormControl } from '@material-ui/core'
 import React, { useState, useEffect } from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import './Signin.css'
@@ -9,15 +9,6 @@ import { signStyle } from './Style';
 
 
 // custom stylesheet for check-box
-const GreyCheckbox = withStyles({
-    root: {
-        color: grey[400],
-        '&$checked': {
-            color: grey[600],
-        },
-    },
-    checked: {},
-})((props) => <Checkbox color="default" {...props} />);
 
 
 //............Sign Up Form Handler
@@ -25,14 +16,10 @@ const GreyCheckbox = withStyles({
 
 //....................................main Function
 function Signin({LoginUser}) {
-    const history = useHistory()
+    
     //............... state/variable initialization 
     const classes = signStyle()
     // check-box state
-    const [state, setState] = useState({
-
-        TC: false,
-    });
     // New user state
     const [newUser, setNewUser] = useState({
         email: '',
@@ -43,9 +30,7 @@ function Signin({LoginUser}) {
 
     //........ ....... StateHandle
     // check-box handler
-    const handleChange = (event) => {
-        setState({ TC: event.target.checked });
-    };
+    
     // new user form input handler
     const SignupInputHandler = (e) => {
         switch (e.target.id) {

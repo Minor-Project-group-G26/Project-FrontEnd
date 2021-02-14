@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import * as TI from "react-icons/ti";
+import React, { useState, useEffect } from 'react';
+// import * as TI from "react-icons/ti";
 import styled from 'styled-components';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -10,9 +10,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
-import { Avatar, Fab, Grid, SvgIcon } from '@material-ui/core';
-import { Delete, Opacity } from '@material-ui/icons';
+// import { Link } from 'react-router-dom';
+import { Avatar, Fab, Grid } from '@material-ui/core';
+import { Delete } from '@material-ui/icons';
 import SearchIcon from '@material-ui/icons/Search';
 
 
@@ -140,7 +140,7 @@ function UserDb() {
   })
   const [AllUser, setAllUser] = useState([]);
   const [Search, setSearch] = useState("")
-  const [items, setItems] = useState([]);
+  // const [items, setItems] = useState([]);
   const [Page, setPage] = useState(0)
   const [Refresh, setRefresh] = useState(false)
 
@@ -203,7 +203,7 @@ function UserDb() {
       if (!success)
         return console.log("fail to delete");
       console.log("delete");
-      if(AllUser[0].id == id)
+      if(AllUser[0].id === id)
       return setRefresh(true)
       return setRefresh(true)
 
@@ -236,7 +236,7 @@ function UserDb() {
           <Avatar
             className="avatar"
             style={{ marginLeft: 'auto', marginRight: 'auto', verticalAlign: 'middle', width: '100px', height: '100px' }}
-            src={data.profileImage != null ? `http://127.0.0.1:5000/get-file/users/${data.profileImage}` : ""}
+            src={data.profileImage !== null ? `http://127.0.0.1:5000/get-file/users/${data.profileImage}` : ""}
             alt={data.email} >{data.name[0]}</Avatar>
         </StyledTableCell>
         <StyledTableCell scope="row" align="center">{data.name}</StyledTableCell>
@@ -313,4 +313,4 @@ function UserDb() {
   )
 }
 
-export default UserDb
+export default UserDb;

@@ -1,11 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import { Link } from 'react-router-dom'
-// import { motion } from "framer-motion"
 import Carosuel from '../Module/Carousel/Carosuel'
-import { Typography, makeStyles, List } from '@material-ui/core'
+import { Typography, makeStyles } from '@material-ui/core'
 import { HomeStyles } from './Style'
 import Axios from 'axios'; 
-// import './Category.css'
 const useStyles = makeStyles(theme =>({
     slider:{
         marginTop: '4rem',
@@ -31,39 +29,6 @@ const useStyles = makeStyles(theme =>({
     }
 }))
 
-const data = [{
-    id: 0,
-    mname: "React",
-    discription: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
-},{
-    id: 1,
-    mname: "React",
-    discription: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
-},{
-    id: 2,
-    mname: "React",
-    discription: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
-},{
-    id: 3,
-    mname: "React",
-    discription: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
-},{
-    id: 4,
-    mname: "React",
-    discription: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
-},{
-    id: 5,
-    mname: "React",
-    discription: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
-},{
-    id: 6,
-    mname: "React",
-    discription: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
-},{
-    id: 7,
-    mname: "React",
-    discription: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
-}];
 
 function Category() {
     const classes = useStyles()
@@ -97,7 +62,7 @@ function Category() {
   const GetMovieData = async(Movie,type) =>{
     try {
       const res = await Axios.get(`http://localhost:5000/searchcat/${type}`)
-      console.log(data);
+      console.log(res.data);
       Movie(res.data);
       return true;
     } catch (error) {

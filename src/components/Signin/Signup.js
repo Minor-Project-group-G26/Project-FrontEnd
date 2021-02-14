@@ -64,6 +64,7 @@ function Signup() {
         setState({ TC: event.target.checked });
     };
  
+    
     // new user form input handler
     const SignupInputHandler = (e) => {
         switch (e.target.id) {

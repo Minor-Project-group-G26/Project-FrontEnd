@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
-import styled from 'styled-components';
 import "./Admin.css";
-// import AddMovie from './components/Pages/AddMovie';
 import AddMovie2 from './components/Admin/components/Pages/AddMovie2';
 import EditMovie from './components/Admin/components/Pages/EditMovie';
 import Login from './components/Admin/components/LoginPage/Login';
 import LeftBar from './components/Admin/LeftMenu/LeftBar';
-import BarGraph from './components/Admin/BarGraphTesting/BarGraph';
 import MovieDb from './components/Admin/components/Pages/MovieDb';
 import UserDb from './components/Admin/components/Pages/UserDb';
 import AddCategory from './components/Admin/components/Pages/AddCategory';
