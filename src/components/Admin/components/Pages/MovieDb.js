@@ -271,6 +271,9 @@ function MovieDb() {
     }
 
     const prev = async () => {
+      if(count.a-1==0){
+        return "Stop"
+      }
       setcount({a:count.a-1})
       console.log(count.a-1)
     }
@@ -388,7 +391,7 @@ function MovieDb() {
         <div style={{width: '100%', margin:'4rem 0rem'}}>
         <Grid container justify='space-between' style={{overflow: 'none'}} className={classes.nextBtn}>
           <Grid item>
-            <img src="/Icons/left_arrow.svg" 
+            <img src="/Icons/left_arrow.svg"
             width={50} 
             height={50}
             onClick={prev}
@@ -396,11 +399,11 @@ function MovieDb() {
             />
           </Grid>
           <Grid item>
-          <img src="/Icons/right_arrow.svg" 
-          width={50} 
-          height={50}
-          onClick={next}
-          />
+            <img src="/Icons/right_arrow.svg" 
+            width={50} 
+            height={50}
+            onClick={next}
+            />
           </Grid>
         </Grid>  
         </div>
