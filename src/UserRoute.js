@@ -44,7 +44,7 @@ function UserRoute() {
       setLoginUser(true);
     }
     return ()=> {setLoginUser(false);}
-  })
+  },[])
 
   return (
     <Router>

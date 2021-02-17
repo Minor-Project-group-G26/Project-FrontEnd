@@ -61,7 +61,7 @@ function Homepage({LoginUser}) {
       GetMovieData(setHorrorMovieData,'Horror');
       GetMovieData(setDramaMovieData,'Drama');
       // console.log()
-  })
+  },[])
   return (
     <main>
       <div className={classes.banner}>

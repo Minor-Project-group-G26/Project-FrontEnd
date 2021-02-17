@@ -34,7 +34,6 @@ function Category() {
     const classes = useStyles()
     const homeStyle = HomeStyles()
 
-
     const [ActionMovieData, setActionMovieData] = useState([]);
     const [DramasMovieData, setDramasMovieData] = useState([]);
     const [ComediesMovieData, setComediesMovieData] = useState([]);
