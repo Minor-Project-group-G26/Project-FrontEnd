@@ -236,7 +236,7 @@ function UserDb() {
           <Avatar
             className="avatar"
             style={{ marginLeft: 'auto', marginRight: 'auto', verticalAlign: 'middle', width: '100px', height: '100px' }}
-            src={data.profileImage !== null ? `http://127.0.0.1:5000/get-file/users/${data.profileImage}` : ""}
+            src={data.profile !== null ? `http://127.0.0.1:5000/get-file/users/${data.profile}` : ""}
             alt={data.email} >{data.name[0]}</Avatar>
         </StyledTableCell>
         <StyledTableCell scope="row" align="center">{data.name}</StyledTableCell>
@@ -297,13 +297,13 @@ function UserDb() {
               <img 
               src="/Icons/left_arrow.svg" 
               width={50} height={50} 
-              onClick={()=> setPage(Page-1)} 
+              onClick={ Navigation.pre ? ()=> setPage(Page-1): () => {}} 
               style={{ opacity: Navigation.pre? "1": "0.5" }} />
             </Grid>
             <Grid item>
               <img src="/Icons/right_arrow.svg" 
               width={50} height={50} 
-              onClick={()=> setPage(Page+1)} 
+              onClick={ Navigation.next? ()=> setPage(Page+1): () => {}} 
               style={{ opacity: Navigation.next? "1": "0.5" }} />
             </Grid>
           </Grid>
