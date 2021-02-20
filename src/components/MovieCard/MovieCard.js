@@ -74,7 +74,7 @@ function MovieCard() {
 
     const [items, setItems] = useState([]);
     useEffect(() => {
-       fetch("http://localhost:5000/movie")
+       fetch("http://localhost:5000/getstarted")
          .then(res => res.json())
          .then(
            (result) => {

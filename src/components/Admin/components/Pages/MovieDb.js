@@ -359,10 +359,10 @@ function MovieDb() {
         
       <Div1 style={{overflowX:'auto'}}>
           <form onSubmit={SearchHandler}>
-            <Fab type="submit" onClick={()=>window.location.reload()} size="small" className="BeginBtn" color="primary" aria-label="add">
+            <Fab onClick={()=>window.location.reload()} size="small" className="BeginBtn" color="primary" aria-label="add">
               <RefreshIcon />
             </Fab>
-            <Fab type="submit" onSubmit={SearchHandler} size="small" className="SearchBtn" color="primary" aria-label="add">
+            <Fab type="submit" size="small" className="SearchBtn" color="primary" aria-label="add">
               <SearchIcon/>
             </Fab>
             <SearchBar onChange={SearchData} type="search" name="search" placeholder="Search..." />
