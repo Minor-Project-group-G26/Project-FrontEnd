@@ -392,7 +392,7 @@ function AdminProfile() {
                 </div>
                 <div className="div2">
                     <label>Email</label>
-                    <div><input onChange={(e)=> setProfile({...Profile, email: e.target.value})} className="dota" type="email" value={Profile.email} /></div>
+                    <div><input disabled onChange={(e)=> setProfile({...Profile, email: e.target.value})} className="dota" type="email" value={Profile.email} /></div>
                 </div>
                 
             </div>
